@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\addWords.js" />
+    <None Include="wwwroot\js\createGrid.js" />
+    <None Include="wwwroot\lib\words\svenska.txt" />
+  </ItemGroup>
+
+</Project>
