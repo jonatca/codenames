@@ -12,6 +12,7 @@
                 // Call your function here
                 cardClicked(cards, i);
             });
+            
         }
   
     });
