@@ -88,7 +88,6 @@ export default class Game {
     rectangle[i].style.backgroundColor = color; //change color of the card
   }
   answerButtonClicked() {
-    console.log("show correct answer");
     var answerButton = document.getElementsByClassName("answer");
     if (this.showAllCards) {
       //hide all cards if they are shown
@@ -97,7 +96,6 @@ export default class Game {
       answerButton[0].innerText = "Show Correct Answer";
     } else {
       //show all cards if they are hidden
-      console.log("show all cards 2");
       var color = null;
       this.showAllCards = true;
       answerButton[0].innerText = "Hide Correct Answer";

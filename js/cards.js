@@ -5,7 +5,6 @@ export default class Cards {
     this.setNumberOfCards();
     this.colorList = this.createColorList();
     this.cardDict = this.createDict();
-    console.log(this.cardDict);
   }
   decideStartingTeam() {
     var randomIndex = Math.floor(Math.random() * 2);
