@@ -13,8 +13,8 @@ export default class Cards {
   }
 
   setNumberOfCards() {
-    this.numCardsRed = 7;
-    this.numCardsBlue = 7;
+    this.numCardsRed = 8;
+    this.numCardsBlue = 8;
     if (this.startingTeam == "red") {
       this.numCardsRed += 1;
     } else {
