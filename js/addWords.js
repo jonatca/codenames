@@ -1,7 +1,7 @@
 import Game from "./game.js";
 var game = new Game();
 createCards();
-createNumberCards();
+createNumberBox();
 function createCards() {
   const grid = document.getElementById("card-grid");
   for (let i = 0; i < 25; i++) {
@@ -30,12 +30,17 @@ function createCards() {
       }
     });
 }
-function createNumberCards() {
+function createNumberBox() {
   const numberGrid = document.getElementById("number-grid");
   for (let i = 1; i <= 6; i++) {
     var numberBox = document.createElement("div");
     numberBox.classList.add("number");
     numberBox.innerText = i;
     numberGrid.appendChild(numberBox);
+    numberBox.addEventListener("click", function () {
+      // Call a the function cardClicked in the file cardClicked.js
+      console.log("numberBoxClicked", i);
+      game.numberBoxClicked(i);
+    });
   }
 }

@@ -1,13 +1,13 @@
 export default class Cards {
   constructor() {
     this.numCards = 25;
-    this.startingTeam = this.startingTeam();
+    this.startingTeam = this.decideStartingTeam();
     this.setNumberOfCards();
     this.colorList = this.createColorList();
     this.cardDict = this.createDict();
     console.log(this.cardDict);
   }
-  startingTeam() {
+  decideStartingTeam() {
     var randomIndex = Math.floor(Math.random() * 2);
     return ["red", "blue"][randomIndex];
   }
@@ -64,21 +64,31 @@ export default class Cards {
   getColor(i) {
     return this.cardDict[i]["color"];
   }
+  getStartingTeam() {
+    return this.startingTeam;
+  }
+
   reduceCardsLeft(i) {
     var team = this.getColor(i);
     if (team == "red") {
       this.numCardsRed -= 1;
-    } else {
+    } else if (team == "blue") {
       this.numCardsBlue -= 1;
     }
+    //if white do nothing
   }
-  numCardsLeft(i) {
-    var team = this.getColor(i);
-    if (team == "red") {
-      return this.numCardsRed;
+  getRedCardsLeft() {
+    return this.numCardsRed;
+  }
+  getBlueCardsLeft() {
+    return this.numCardsBlue;
+  }
+
+  startingTeam() {
+    if (this.numCardsBlue > this.numCardsRed) {
+      return "blue";
     } else {
-      return this.numCardsBlue;
+      return "red";
     }
   }
 }
-// module.exports = Cards;
