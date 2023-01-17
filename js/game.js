@@ -14,7 +14,6 @@ export default class Game {
       this.cards.reduceCardsLeft(i);
       this.changeGuessesAndTurn(i);
       this.paintTurn();
-      this.resetBoxesGrey();
       this.checkGameOver();
     }
   }
@@ -34,6 +33,7 @@ export default class Game {
       } else {
         this.turn = "red";
       }
+      this.resetBoxesGrey();
       this.numberGuesses = 0;
       //   let numberGrid = document.getElementById("number-grid");
       //   numberGrid.style.backgroundColor = this.turn;
