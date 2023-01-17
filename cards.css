@@ -58,3 +58,32 @@
   font-family: "Roboto", sans-serif;
   /* color: blue; */
 }
+
+#answer-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 33vw);
+  grid-template-rows: repeat(1, 80px);
+  grid-gap: 10px;
+  max-width: 33vw;
+  max-height: 100vh;
+  margin: 0 auto;
+  justify-content: center;
+  align-content: center;
+  margin-top: 1.2%;
+  margin-left: 33.3%;
+  margin-right: 33.3%;
+  background-color: white;
+}
+
+.answer {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  /* color: blue; */
+}

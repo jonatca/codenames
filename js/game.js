@@ -5,6 +5,7 @@ export default class Game {
     this.turn = this.cards.getStartingTeam();
     this.paintTurn(); //paints the startingturn backround of numbergrid
     this.numberGuesses = 0;
+    this.showAllCards = false;
   }
 
   numberBoxClicked(i) {
@@ -17,15 +18,15 @@ export default class Game {
     this.numberGuesses = i;
   }
 
-  cardClicked(rectangle, i) {
+  cardClicked(i) {
     if (!this.cards.isShowing(i) && this.numberGuesses > 0) {
       //not missclick
-      rectangle[i].style.backgroundColor = this.cards.getColor(i); //change color of the card
+      this.paintCard(i); //paints the card
       this.cards.setShowing(i); //set card to showing = True (not needed?)
       this.cards.reduceCardsLeft(i);
       this.changeGuessesAndTurn(i);
       this.paintTurn(); //paints the turn backround of numbergrid
-      this.checkGameOver();
+      this.checkGameOver(i);
     }
   }
 
@@ -48,11 +49,27 @@ export default class Game {
     numberGrid.style.backgroundColor = this.turn;
   }
 
-  checkGameOver() {
+  checkGameOver(i) {
+    let winner = null;
     if (this.cards.getRedCardsLeft() == 0) {
-      console.log("red wins");
+      winner = "red";
     } else if (this.cards.getBlueCardsLeft() == 0) {
-      console.log("blue wins");
+      winner = "blue";
+    }
+    if (this.cards.getColor(i) == "#5A5A5A") {
+      //colorcode for black card
+      //whoever guesses black loses
+      if (this.turn == "red") {
+        winner = "blue";
+      } else {
+        winner = "red";
+      }
+    }
+    if (winner != null) {
+      //wait 1 second before alert
+      setTimeout(function () {
+        alert("Game Over, " + winner + " wins!");
+      }, 100);
     }
   }
   _resetBoxesGrey() {
@@ -60,6 +77,33 @@ export default class Game {
       //reset number boxes to grey
       var numberBox = document.getElementsByClassName("number")[j - 1];
       numberBox.style.backgroundColor = "#f2f2f2";
+    }
+  }
+  paintCard(i, color = null) {
+    //color could be grey
+    if (color == null) {
+      color = this.cards.getColor(i);
+    }
+    var rectangle = document.getElementsByClassName("card");
+    rectangle[i].style.backgroundColor = color; //change color of the card
+  }
+  answerButtonClicked() {
+    console.log("show correct answer");
+    var answerButton = document.getElementsByClassName("answer");
+    if (this.showAllCards) {
+      //hide all cards if they are shown
+      var color = "#f2f2f2";
+      this.showAllCards = false;
+      answerButton[0].innerText = "Show Correct Answer";
+    } else {
+      //show all cards if they are hidden
+      console.log("show all cards 2");
+      var color = null;
+      this.showAllCards = true;
+      answerButton[0].innerText = "Hide Correct Answer";
+    }
+    for (let i = 0; i < this.cards.getNumberOfCards(); i++) {
+      this.paintCard(i, color);
     }
   }
 }

@@ -32,11 +32,12 @@ export default class Cards {
     }
     for (
       let i = 0;
-      i < this.numCards - this.numCardsRed - this.numCardsBlue;
+      i < this.numCards - this.numCardsRed - this.numCardsBlue - 1;
       i++
     ) {
       colorList.push("white");
     }
+    colorList.push("#5A5A5A"); //colorcode for black card (dark grey)
 
     //shuffle colorList
     for (let i = colorList.length - 1; i > 0; i--) {
@@ -45,6 +46,7 @@ export default class Cards {
     }
     return colorList;
   }
+  shuffle;
 
   createDict() {
     var cardDict = {};
@@ -66,6 +68,9 @@ export default class Cards {
   }
   getStartingTeam() {
     return this.startingTeam;
+  }
+  getNumberOfCards() {
+    return this.numCards;
   }
 
   reduceCardsLeft(i) {

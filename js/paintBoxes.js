@@ -2,6 +2,7 @@ import Game from "./game.js";
 var game = new Game();
 createCards();
 createNumberBox();
+createAnswerButton();
 function createCards() {
   const grid = document.getElementById("card-grid");
   for (let i = 0; i < 25; i++) {
@@ -21,11 +22,7 @@ function createCards() {
         word.innerText = words[i];
         rectangle[i].append(word);
         rectangle[i].addEventListener("click", function () {
-          // Call a the function cardClicked in the file cardClicked.js
-
-          game.cardClicked(rectangle, i);
-
-          //cardClicked(cards, i);
+          game.cardClicked(i);
         });
       }
     });
@@ -38,9 +35,17 @@ function createNumberBox() {
     numberBox.innerText = i;
     numberGrid.appendChild(numberBox);
     numberBox.addEventListener("click", function () {
-      // Call a the function cardClicked in the file cardClicked.js
-      console.log("numberBoxClicked", i);
       game.numberBoxClicked(i);
     });
   }
+}
+function createAnswerButton() {
+  const answerGrid = document.getElementById("answer-grid");
+  var answerButton = document.createElement("div");
+  answerButton.classList.add("answer");
+  answerButton.innerText = "Show Correct Answer";
+  answerGrid.appendChild(answerButton);
+  answerButton.addEventListener("click", function () {
+    game.answerButtonClicked();
+  });
 }
