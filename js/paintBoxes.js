@@ -1,5 +1,7 @@
+var wordsFileName = "words/ord1.txt";
 import Game from "./game.js";
 var game = new Game();
+
 createCards();
 createNumberBox();
 createAnswerButton();
@@ -11,7 +13,7 @@ function createCards() {
     grid.appendChild(card);
   }
 
-  fetch("words/Svenska.txt")
+  fetch(wordsFileName)
     .then((response) => response.text())
     .then((data) => {
       let words = data.split("\n").slice(0, 25); // split the file data by new line and slice first 25 words

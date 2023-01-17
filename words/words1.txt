@@ -1,0 +1,25 @@
+Elephant
+Mountain
+Diamond
+Guitar
+Keyboard
+Robot
+Airplane
+Hurricane
+Train
+Mirror
+Sunglasses
+Telephone
+Camera
+Computer
+Bookshelf
+Sofa
+Lamp
+Carpet
+Painting
+Sculpture
+Fireplace
+Refrigerator
+Oven
+Dishwasher
+Washing machine
